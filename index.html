@@ -12,11 +12,16 @@
     <div class="content">
     <div ng-controller="ninjaController">
         <p>{{message}}</p>
+        <button ng-click="order ='belt'">Order by belt</button>
+        <button ng-click="order ='name'">Order by name</button>
         <input type="text" ng-model='search' placeholder="Search for a ninja">
         <ul>
-          <li ng-repeat="ninja in ninjas | orderBy: 'name' | filter: search" ng-show="ninja.availiable">
-            {{ninja.name}} -
-            {{ninja.rate | currency: '¥':0}}</li>
+          <li ng-repeat="ninja in ninjas | orderBy: order | filter: search" ng-show="ninja.availiable">
+            <h3>  {{ninja.name}} -  {{ninja.rate | currency: '¥':0}}</h3>
+            <div ng-click='removeNinja(ninja)' class="remove">x</div>
+            <span class="belt" style="background: {{ninja.belt}}">{{ninja.belt}} Belt</span>
+          </li>
+
         </ul>
       </div>
     </div>

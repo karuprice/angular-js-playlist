@@ -6,6 +6,11 @@ myNinjaApp.controller('ninjaController', ['$scope', function($scope) {
 
   $scope.message = 'Ninja time'
 
+  $scope.removeNinja = function(ninja){
+    var removedNinja = $scope.ninjas.indexOf(ninja);
+    $scope.ninjas.splice(removedNinja, 1);
+  }
+
   $scope.ninjas = [
     {
       name: 'Karl',
