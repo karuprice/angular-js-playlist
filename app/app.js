@@ -4,7 +4,8 @@ myNinjaApp.config(['$routeProvider', function($routeProvider){
 
   $routeProvider
     .when('/home', {
-      templateUrl: 'views/home.html'
+      templateUrl: 'views/home.html',
+      controller: 'ninjaController'
     })
     .when('/directory', {
       templateUrl: 'views/directory.html',
@@ -14,7 +15,24 @@ myNinjaApp.config(['$routeProvider', function($routeProvider){
     })
 }]);
 
-myNinjaApp.controller('ninjaController', ['$scope', function($scope) {
+// directies need to return an obj
+// restrict: 'E' ** can only be used as an Element, A is attribute
+// ninjas: '=' ** binds on value to another/ ninjas from the element from <random-ninja></
+myNinjaApp.directive('randomNinja', [function() {
+  return {
+    restrict: 'E',
+    scope: {
+      ninjas: '=',
+      title:  '='
+    },
+    templateUrl: 'views/random.html',
+    controller: function($scope){
+      $scope.random = Math.floor(Math.random() * 4);
+    }
+  };
+}]);
+
+myNinjaApp.controller('ninjaController', ['$scope', '$http', function($scope, $http) {
 
   $scope.message = 'Ninja time'
 
@@ -37,35 +55,7 @@ myNinjaApp.controller('ninjaController', ['$scope', function($scope) {
 
   };
 
-  $scope.ninjas = [
-    {
-      name: 'Karl',
-      belt: 'Black',
-      rate: 50000,
-      availiable: true,
-      thumb: "content/img/baby.png"
-    },
-    {
-      name: 'Kayo',
-      belt: 'Red',
-      rate: 4500,
-      availiable: true,
-      thumb: "content/img/baby.png"
-    },
-    {
-      name: 'Liam',
-      belt: 'Blue',
-      rate: 3000,
-      availiable: true,
-      thumb: "content/img/baby.png"
-    },
-    {
-      name: 'Evan',
-      belt: 'Yellow',
-      rate: 2000,
-      availiable: true,
-      thumb: "content/img/baby.png"
-    },
-  ]
+  $http.get('data/ninjas.json').then(function(response){
+      $scope.ninjas = response.data});
 
 }]);
