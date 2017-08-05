@@ -1,4 +1,4 @@
-[{"name":"Karl","belt":"Black","rate":50000,"availiable":true,"thumb":"content/img/baby.png"},
-{"name":"Kayo","belt":"Red","rate":4500,"availiable":true,"thumb":"content/img/baby.png"},
+[{"name":"Karl","belt":"Black","rate":50000,"availiable":true,"thumb":"content/img/karl.png"},
+{"name":"Kayo","belt":"Red","rate":4500,"availiable":true,"thumb":"content/img/kayo.png"},
 {"name":"Liam","belt":"Blue","rate":3000,"availiable":true,"thumb":"content/img/liam.png"},
-{"name":"Evan","belt":"Yellow","rate":2000,"availiable":true,"thumb":"content/img/baby.png"}]
+{"name":"Evan","belt":"Yellow","rate":2000,"availiable":true,"thumb":"content/img/evan.png"}]
