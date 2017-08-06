@@ -10,7 +10,16 @@ myNinjaApp.config(['$routeProvider', function($routeProvider){
     .when('/directory', {
       templateUrl: 'views/directory.html',
       controller: 'ninjaController'
-    }).otherwise({
+    })
+    .when('/contact', {
+      templateUrl: 'views/contact.html',
+      controller: 'ContactController'
+    })
+    .when('/contact-success', {
+      templateUrl: 'views/contact-success.html',
+      controller: 'ContactController'
+    })
+    .otherwise({
       redirectTo: '/home'
     })
 }]);
@@ -61,4 +70,10 @@ myNinjaApp.controller('ninjaController', ['$scope', '$http', function($scope, $h
 
   $http.get('data/ninjas.json').then(function(response){
       $scope.ninjas = response.data});
+}]);
+
+myNinjaApp.controller('ContactController', ['$scope', '$location', function($scope, $location) {
+  $scope.sendMessage = function(){
+    $location.path('/contact-success');
+  };
 }]);
